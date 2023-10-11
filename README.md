@@ -1,73 +1,146 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Boxful Backend API
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is the official API for the Boxful Backend, designed for a technical test. It provides endpoints and functionality related to orders and packages.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Scripts](#scripts)
+- [Dependencies](#dependencies)
+- [Dev Dependencies](#dev-dependencies)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [License](#license)
 
 ## Installation
 
+To get started with the Boxful Backend API, follow these steps:
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/cabrera-evil/boxful-backend.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd boxful-backend
+   ```
+
+3. Install the required dependencies:
+
+   ```bash
+   npm install
+   ```
+
+## Usage
+
+Before running the API, make sure to set up the necessary configuration, environment variables, and database connections as required by the [NestJS configuration](https://docs.nestjs.com/techniques/configuration) and the packages used.
+
+To start the development server, run:
+
 ```bash
-$ npm install
+npm run start:dev
 ```
 
-## Running the app
+To start the production server, use the docker-compose file (make sure to copy the content of `.env.example` to `.env` first):
+
+You can use the following .env file:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+MONGO_URI=mongodb://database:27017/boxful
+PORT=3000
 ```
-
-## Test
+Then run:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+docker-compose up -d
 ```
 
-## Support
+Before use the API, you can restore the database with the following command which executes a bash script that restores the database from a dump file:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+./data/restore.sh
+```
 
-## Stay in touch
+The API will be available at `http://localhost:3000` by default, to access the documentation you must use `http://localhost:3000/api`.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Scripts
+
+Here are the available scripts for this project:
+
+- `build`: Build the NestJS application.
+- `format`: Format source code files using Prettier.
+- `start`: Start the application.
+- `start:dev`: Start the application in development mode with watch.
+- `start:debug`: Start the application in debug mode with watch.
+- `start:prod`: Start the production version of the application.
+- `lint`: Run ESLint and fix linting issues.
+- `test`: Run Jest tests.
+- `test:watch`: Run Jest tests in watch mode.
+- `test:cov`: Run Jest tests with coverage reporting.
+- `test:debug`: Run Jest tests in debug mode.
+- `test:e2e`: Run end-to-end tests using the Jest configuration from `jest-e2e.json`.
+
+## Dependencies
+
+The main dependencies for this project are as follows:
+
+- `@nestjs/common`: NestJS core functionality.
+- `@nestjs/config`: Configuration handling for NestJS.
+- `@nestjs/mongoose`: MongoDB integration for NestJS.
+- `class-transformer`: Serialization/deserialization library.
+- `class-validator`: Validation library.
+- `mongoose`: MongoDB driver for Node.js.
+- `rxjs`: Reactive Extensions for JavaScript.
+
+## Dev Dependencies
+
+Dev dependencies used in this project are as follows:
+
+- `@nestjs/cli`: NestJS command-line tools.
+- `@nestjs/testing`: Testing utilities for NestJS.
+- `@types/express`: TypeScript type definitions for Express.
+- `@types/jest`: TypeScript type definitions for Jest.
+- `@types/node`: TypeScript type definitions for Node.js.
+- `@types/supertest`: TypeScript type definitions for Supertest.
+- `@typescript-eslint/eslint-plugin`: ESLint plugin for TypeScript.
+- `@typescript-eslint/parser`: ESLint parser for TypeScript.
+- `eslint`: Linting tool.
+- `eslint-config-prettier`: Prettier ESLint configuration.
+- `eslint-plugin-prettier`: ESLint plugin for Prettier integration.
+- `jest`: Testing framework.
+- `prettier`: Code formatting tool.
+- `source-map-support`: Sourcemap support for Node.js.
+- `supertest`: HTTP assertion library.
+- `ts-jest`: Jest TypeScript support.
+- `ts-loader`: TypeScript loader for Webpack.
+- `ts-node`: TypeScript execution environment.
+- `tsconfig-paths`: Load modules using tsconfig paths.
+- `typescript`: TypeScript compiler.
+
+## Testing
+
+To run the tests for this project, you can use the following commands:
+
+- `npm run test`: Run all unit tests.
+- `npm run test:watch`: Run tests in watch mode.
+- `npm run test:cov`: Run tests and generate code coverage reports.
+- `npm run test:e2e`: Run end-to-end tests.
+
+## Project Structure
+
+The project is organized as follows:
+
+- `src/common`: Common utilities and types.
+- `src/config`: Configuration files and utilities.
+- `src/modules/orders`: Functionality related to orders, including controllers, services, DTOs, and entities.
+- `src/modules/packages`: Functionality related to packages, including controllers, services, DTOs, and entities.
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
