@@ -104,6 +104,14 @@ export class OrdersService {
     if (!updatedOrder)
       return { statusCode: 404, message: 'Order not found', data: null };
 
+    if (updateOrderDto.items) {
+      return {
+        statusCode: 400,
+        message: 'Items cannot be updated',
+        data: null,
+      };
+    }
+
     return {
       statusCode: 200,
       message: 'Order updated successfully',
