@@ -1,10 +1,10 @@
 {
   "name": "boxful-backend",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Technical test API",
   "author": "cabrera-evil",
-  "private": true,
-  "license": "UNLICENSED",
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

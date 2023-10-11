@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  backend:
+    image: boxful-backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - 3000:3000
+    container_name: boxful-backend
+    depends_on:
+      - database
+    env_file:
+      - .env
+    networks:
+      - boxful-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+  database:
+    image: mongo:latest
+    restart: on-failure
+    ports:
+      - 27017:27017
+    container_name: boxful-database
+    networks:
+      - boxful-network
+    volumes:
+      - boxful-volume:/data/db
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+
+networks:
+  boxful-network:
+    driver: bridge
+
+volumes:
+  boxful-volume:
+
