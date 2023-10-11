@@ -21,17 +21,23 @@ export class CreatePackageDto {
   @IsNotEmpty()
   weightInPounds: number;
 
+  @IsNumber()
+  @IsNotEmpty()
+  quantity: number;
+
   constructor(
     content: string,
     length: number,
     height: number,
     width: number,
     weightInPounds: number,
+    quantity: number,
   ) {
     this.content = content;
     this.length = length;
     this.height = height;
     this.width = width;
     this.weightInPounds = weightInPounds;
+    this.quantity = quantity;
   }
 }

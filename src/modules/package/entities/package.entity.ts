@@ -19,6 +19,9 @@ export class Package {
 
   @Prop({ required: true })
   weightInPounds: number;
+
+  @Prop({ required: true })
+  quantity: number;
 }
 
 export const PackageSchema = SchemaFactory.createForClass(Package);
