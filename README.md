@@ -67,7 +67,7 @@ Before use the API, you can restore the database with the following command whic
 ./data/restore.sh
 ```
 
-The API will be available at `http://localhost:3000` by default.
+The API will be available at `http://localhost:3000` by default, to access the documentation you must use `http://localhost:3000/api`.
 
 ## Scripts
 
